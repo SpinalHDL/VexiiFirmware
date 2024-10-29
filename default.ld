@@ -1,7 +1,7 @@
-RAM_ORIGIN = 0x80F80000;
-RAM_LENGTH = 128K;
-__heap_size = 10K;
-__stack_size = 10K;
+RAM_ORIGIN = 0x80000000;
+RAM_LENGTH = 16K;
+__heap_size = 1K;
+__stack_size = 1K;
 
 
 OUTPUT_ARCH( "riscv" )
