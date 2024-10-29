@@ -27,10 +27,16 @@ target_compile_definitions(
         CPU_FREQ=100000000
 )
 
+target_compile_features(
+    ${TARGET}
+    PRIVATE
+        cxx_std_20
+)
+
 target_sources(
     ${TARGET}
     PRIVATE
-        main.c
+        main.cpp
         start.S
         trap.S
 )
