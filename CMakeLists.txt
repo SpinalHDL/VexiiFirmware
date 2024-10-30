@@ -3,7 +3,7 @@ cmake_minimum_required(VERSION 3.30)
 include(cmake/toolchain/riscv.cmake)
 
 project(
-    foo
+    vexii-firmware
     VERSION 0.0.0
     LANGUAGES
         ASM
@@ -21,16 +21,10 @@ add_executable(${TARGET})
 
 target_setup_rv32(${TARGET})
 
-target_compile_definitions(
-    ${TARGET}
-    PRIVATE
-        CPU_FREQ=100000000
-)
-
 target_compile_features(
     ${TARGET}
     PRIVATE
-        cxx_std_20
+        cxx_std_23
 )
 
 target_sources(
