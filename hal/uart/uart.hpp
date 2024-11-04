@@ -18,6 +18,34 @@ namespace hal
         {
         }
 
+        [[nodiscard]]
+        std::uint32_t
+        rx_fifo_capacity() const
+        {
+            return 0;   // ToDo
+        }
+
+        [[nodiscard]]
+        std::uint32_t
+        rx_fifo_size() const
+        {
+            return uart_readOccupancy(m_base_addr);
+        }
+
+        [[nodiscard]]
+        std::uint32_t
+        tx_fifo_capacity() const
+        {
+            return 0;   // ToDo
+        }
+
+        [[nodiscard]]
+        std::uint32_t
+        tx_fifo_size()
+        {
+            return uart_writeAvailability(m_base_addr);
+        }
+
         // ToDo: Directly access registers ourselves, don't use old C API.
         void
         write(const std::span<const std::byte> data)

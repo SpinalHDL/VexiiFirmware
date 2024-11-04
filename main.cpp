@@ -31,8 +31,8 @@ main()
 
     clint.setup(100'000'000);
 
+    uart.write(utils::to_bytes("Hello Vexii!\n"));
     while (true) {
-        uart.write(utils::to_bytes("Hello Vexii!\n"));
-        clint.delay(3s);
+        clint.delay(10ms);
     }
 }
