@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../uart.h"        // ToDo: Temporary, implement everything ourselves instead
+#include "../legacy/uart.h"        // ToDo: Temporary, implement everything ourselves instead
 
 #include <cstdint>
 #include <cstddef>

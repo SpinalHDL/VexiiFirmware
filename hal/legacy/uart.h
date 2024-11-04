@@ -1,7 +1,7 @@
 #pragma once
 
-#include "type.h"
-#include "io.h"
+#include "../type.h"
+#include "../io.h"
 
 #define UART_DATA 0x00
 #define UART_STATUS 0x04
