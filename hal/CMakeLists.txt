@@ -1,4 +1,5 @@
 add_subdirectory(clint)
+add_subdirectory(gpio)
 add_subdirectory(plic)
 add_subdirectory(uart)
 

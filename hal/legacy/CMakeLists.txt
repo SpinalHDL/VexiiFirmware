@@ -2,6 +2,7 @@ target_sources(
     ${TARGET}
     PRIVATE
         clint.h
+        gpio.h
         io.h
         plic.h
         uart.h
