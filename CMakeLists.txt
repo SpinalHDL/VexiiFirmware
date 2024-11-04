@@ -21,6 +21,8 @@ add_executable(${TARGET})
 
 target_setup_rv32(${TARGET})
 
+add_subdirectory(hal)
+
 target_compile_features(
     ${TARGET}
     PRIVATE
