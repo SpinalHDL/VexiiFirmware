@@ -41,7 +41,7 @@ namespace hal
         std::uint32_t
         claim(const std::uint32_t target)
         {
-            plic_claim(m_base_addr, target);
+            return plic_claim(m_base_addr, target);
         }
 
         void
