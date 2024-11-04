@@ -2,6 +2,8 @@ target_sources(
     ${TARGET}
     PRIVATE
         clint.h
+        io.h
         plic.h
         uart.h
+        type.h
 )

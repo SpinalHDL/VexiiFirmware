@@ -1,7 +1,7 @@
 #pragma once
 
-#include "../type.h"
-#include "../io.h"
+#include "type.h"
+#include "io.h"
 
 #define CLINT_IPI_ADDR 0x0000
 #define CLINT_CMP_ADDR 0x4000

@@ -1,7 +1,7 @@
 #pragma once
 
-#include "../type.h"
-#include "../io.h"
+#include "type.h"
+#include "io.h"
 
 #define PLIC_PRIORITY_BASE         0x0000
 #define PLIC_PENDING_BASE          0x1000
