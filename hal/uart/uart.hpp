@@ -1,0 +1,41 @@
+#pragma once
+
+#include "../uart.h"        // ToDo: Temporary, implement everything ourselves instead
+
+#include <cstdint>
+#include <cstddef>
+#include <span>
+
+namespace hal
+{
+
+    struct uart
+    {
+        constexpr
+        explicit
+        uart(const std::uint32_t base_addr) :
+            m_base_addr{ base_addr }
+        {
+        }
+
+        // ToDo: Directly access registers ourselves, don't use old C API.
+        void
+        write(const std::span<const std::byte> data)
+        {
+            for (const auto& b : data)
+                uart_write(m_base_addr, static_cast<char>(b));
+        }
+
+        // ToDo: Directly access registers ourselves, don't use old C API.
+        void
+        read(const std::span<std::byte> data)
+        {
+            for (auto& b : data)
+                b = static_cast<std::byte>(uart_read(m_base_addr));
+        }
+
+    private:
+        std::uint32_t m_base_addr = 0;
+    };
+
+}

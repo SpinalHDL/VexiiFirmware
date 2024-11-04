@@ -4,6 +4,8 @@
 #include <string>
 
 #include "hal/uart.h"
+#include "hal/uart/uart.hpp"
+#include "utils/bytes.hpp"
 
 extern "C"
 void
@@ -18,11 +20,11 @@ trap()
 int
 main()
 {
-    int i = 0;
+    hal::uart uart(UART_A);
+
+    const auto str = "Hello Vexii!\n";
 
     while (true) {
-        i++;
-        uart_write(UART_A, 'u');
-
+        uart.write(utils::to_bytes(str));
     }
 }

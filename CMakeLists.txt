@@ -22,6 +22,7 @@ add_executable(${TARGET})
 target_setup_rv32(${TARGET})
 
 add_subdirectory(hal)
+add_subdirectory(utils)
 
 target_compile_features(
     ${TARGET}
