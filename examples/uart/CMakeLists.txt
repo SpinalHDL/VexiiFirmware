@@ -1,6 +1,6 @@
 set(RV32_LINKER_SCRIPT ${PROJECT_SOURCE_DIR}/common/ld/default.ld)
 
-set(TARGET example-hello_world)
+set(TARGET example-uart)
 
 add_executable(${TARGET})
 
