@@ -1,6 +1,6 @@
 target_sources(
     ${TARGET}
-    PRIVATE
+    INTERFACE
         clint.h
         gpio.h
         io.h

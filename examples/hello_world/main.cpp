@@ -1,12 +1,16 @@
+#include <hal/clint/clint.hpp>
+#include <hal/plic/plic.hpp>
+#include <hal/uart/uart.hpp>
+#include <utils/bytes.hpp>
+
 #include <array>
 #include <cstddef>
 #include <cstdint>
 #include <string>
 
-#include "hal/clint/clint.hpp"
-#include "hal/plic/plic.hpp"
-#include "hal/uart/uart.hpp"
-#include "utils/bytes.hpp"
+#define UART_A 0x10001000
+#define CLINT  0x10010000
+#define PLIC   0x10C00000
 
 extern "C"
 void
@@ -14,10 +18,6 @@ trap()
 {
 
 }
-
-#define UART_A 0x10001000
-#define CLINT  0x10010000
-#define PLIC   0x10C00000
 
 [[noreturn]]
 int
