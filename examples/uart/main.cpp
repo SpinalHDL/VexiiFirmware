@@ -1,13 +1,6 @@
 #include <system/soc.hpp>
 #include <utils/bytes.hpp>
 
-extern "C"
-void
-trap()
-{
-
-}
-
 [[noreturn]]
 int
 main()

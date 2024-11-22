@@ -1,12 +1,5 @@
 #include <system/soc.hpp>
 
-extern "C"
-void
-trap()
-{
-
-}
-
 [[noreturn]]
 int
 main()

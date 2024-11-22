@@ -11,4 +11,6 @@ target_sources(
         peripherals.hpp
         soc.cpp
         soc.hpp
+        trap.cpp
+        trap.hpp
 )
