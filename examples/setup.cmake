@@ -22,13 +22,7 @@ function(target_setup_example TARGET)
         ${TARGET}
         PRIVATE
             hal
-    )
-
-    target_sources(
-        ${TARGET}
-        PRIVATE
-            ${PROJECT_SOURCE_DIR}/common/startup/start.S
-            ${PROJECT_SOURCE_DIR}/common/trap/trap.S
+            system
     )
 
 endfunction()

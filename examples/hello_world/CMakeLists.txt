@@ -1,4 +1,4 @@
-set(RV32_LINKER_SCRIPT ${PROJECT_SOURCE_DIR}/common/ld/default.ld)
+set(RV32_LINKER_SCRIPT ${PROJECT_SOURCE_DIR}/common/system/default.ld)
 
 set(TARGET example-hello_world)
 

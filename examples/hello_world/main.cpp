@@ -1,6 +1,4 @@
-#include <hal/clint/clint.hpp>
-
-#define CLINT  0x10010000
+#include <system/soc.hpp>
 
 extern "C"
 void
@@ -15,11 +13,9 @@ main()
 {
     using namespace std::chrono_literals;
 
-    hal::clint clint(CLINT);
-
-    clint.setup(100'000'000);
+    soc::init();
 
     while (true) {
-        clint.delay(10ms);
+        soc::delay(10ms);
     }
 }
