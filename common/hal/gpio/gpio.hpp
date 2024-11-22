@@ -12,13 +12,13 @@ namespace hal
          */
         explicit
         constexpr
-        gpio(const std::uint32_t base_addr) :
+        gpio(const std::uintptr_t base_addr) :
             m_base_addr{ base_addr }
         {
         }
 
     private:
-        std::uint32_t m_base_addr = 0;
+        std::uintptr_t m_base_addr = 0;
     };
 
 }

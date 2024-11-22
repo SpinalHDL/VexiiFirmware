@@ -13,7 +13,7 @@ namespace hal
     {
         constexpr
         explicit
-        uart(const std::uint32_t base_addr) :
+        uart(const std::uintptr_t base_addr) :
             m_base_addr{ base_addr }
         {
         }
@@ -63,7 +63,7 @@ namespace hal
         }
 
     private:
-        std::uint32_t m_base_addr = 0;
+        std::uintptr_t m_base_addr = 0;
     };
 
 }
