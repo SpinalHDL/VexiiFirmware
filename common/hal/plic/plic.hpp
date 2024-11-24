@@ -37,7 +37,12 @@ namespace hal
             plic_set_threshold(m_base_addr, target, threshold);
         }
 
-        // ToDo: Mark as nodiscard?
+        /**
+         * Lets a target claim a gateway.
+         *
+         * @return the gateway ID.
+         */
+        [[nodiscard]]
         std::uint32_t
         claim(const std::uint32_t target)
         {
