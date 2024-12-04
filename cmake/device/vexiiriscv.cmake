@@ -48,6 +48,9 @@ function(target_setup_rv32 TARGET)
             $<$<COMPILE_LANGUAGE:CXX>:-fno-use-cxa-atexit>
 
             $<$<BOOL:${RV32_USE_FPU}>:-mfloat-abi=${RV32_DEVICE_FLOAT_ABI}>
+
+
+            -I${PROJECT_SOURCE_DIR}/device/${DEVICE}
     )
 
     target_link_options(
