@@ -1,4 +1,7 @@
 function(target_setup_rv32 TARGET)
+    if (NOT RV32_LINKER_SCRIPT)
+        set(RV32_LINKER_SCRIPT ${PROJECT_SOURCE_DIR}/device/${DEVICE}/linker/default.ld)
+    endif()
 
     # Sanity checks
     if (NOT RV32_LINKER_SCRIPT)
@@ -57,7 +60,7 @@ function(target_setup_rv32 TARGET)
             $<$<BOOL:${RV32_USE_FPU}>:-mfloat-abi=${RV32_DEVICE_FLOAT_ABI}>
 
             $<$<BOOL:${RV32_GENERATE_MAP}>:LINKER:-Map=$<TARGET_FILE_DIR:${TARGET}>/$<TARGET_NAME_IF_EXISTS:${TARGET}>.map>
-
+            -L${PROJECT_SOURCE_DIR}/device/${DEVICE}/linker
             -T ${RV32_LINKER_SCRIPT}
     )
 
