@@ -4,9 +4,6 @@ function(target_setup_rv32 TARGET)
     endif()
 
     # Sanity checks
-    if (NOT RV32_LINKER_SCRIPT)
-        message(FATAL_ERROR "No RV32_LINKER_SCRIPT specified.")
-    endif()
     if (NOT RV32_GENERATE_MAP)
         set(RV32_GENERATE_MAP ON)
     endif()
@@ -64,6 +61,7 @@ function(target_setup_rv32 TARGET)
 
             $<$<BOOL:${RV32_GENERATE_MAP}>:LINKER:-Map=$<TARGET_FILE_DIR:${TARGET}>/$<TARGET_NAME_IF_EXISTS:${TARGET}>.map>
             -L${PROJECT_SOURCE_DIR}/device/${DEVICE}/linker
+            -L${PROJECT_SOURCE_DIR}
             -T ${RV32_LINKER_SCRIPT}
     )
 
