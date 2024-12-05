@@ -28,4 +28,4 @@ project(
 )
 
 add_subdirectory(common)
-add_subdirectory(examples)
+add_subdirectory(app)

@@ -1,6 +1,6 @@
 include(${PROJECT_SOURCE_DIR}/cmake/device/vexiiriscv.cmake)
 
-function(target_setup_example TARGET)
+function(target_setup_default TARGET)
 
     target_setup_rv32(${TARGET})
 
