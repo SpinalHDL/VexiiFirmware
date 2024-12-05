@@ -1,13 +1,14 @@
-set(TARGET example-uart)
+set(TARGET asm-raw)
 
 add_executable(${TARGET})
 
-target_setup_cpp(${TARGET})
+target_setup_asm(${TARGET})
+
 
 target_sources(
     ${TARGET}
     PRIVATE
-        main.cpp
+        start.S
 )
 
 
