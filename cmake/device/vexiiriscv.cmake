@@ -1,6 +1,6 @@
 function(target_setup_riscv TARGET)
     if (NOT RV_LINKER_SCRIPT)
-        set(RV_LINKER_SCRIPT ${PROJECT_SOURCE_DIR}/device/${DEVICE}/linker/default.ld)
+        set(RV_LINKER_SCRIPT ${PROJECT_SOURCE_DIR}/soc/${SOC}/linker/default.ld)
     endif()
 
     # Sanity checks
@@ -35,7 +35,7 @@ function(target_setup_riscv TARGET)
             $<$<COMPILE_LANGUAGE:CXX>:-fno-rtti>
             $<$<COMPILE_LANGUAGE:CXX>:-fno-use-cxa-atexit>
 
-            -I${PROJECT_SOURCE_DIR}/device/${DEVICE}
+            -I${PROJECT_SOURCE_DIR}/soc/${SOC}
     )
 
     target_link_options(
@@ -48,7 +48,7 @@ function(target_setup_riscv TARGET)
             -Wl,--gc-sections
 
             $<$<BOOL:${RV_GENERATE_MAP}>:LINKER:-Map=$<TARGET_FILE_DIR:${TARGET}>/$<TARGET_NAME_IF_EXISTS:${TARGET}>.map>
-            -L${PROJECT_SOURCE_DIR}/device/${DEVICE}/linker
+            -L${PROJECT_SOURCE_DIR}/soc/${SOC}/linker
             -L${PROJECT_SOURCE_DIR}
             -T ${RV_LINKER_SCRIPT}
     )
