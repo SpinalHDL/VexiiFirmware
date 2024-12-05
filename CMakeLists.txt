@@ -6,11 +6,11 @@ if(NOT DEFINED DEVICE)
 endif()
 
 # Construct the path to the device-specific CMakeLists.txt
-set(DEVICE_CMAKE_FILE "${CMAKE_SOURCE_DIR}/device/${DEVICE}")
+set(DEVICE_CMAKE_FILE "${CMAKE_SOURCE_DIR}/device/${DEVICE}/CMakeLists.txt")
 
 # Verify that the specified CMakeLists.txt exists
 if(EXISTS ${DEVICE_CMAKE_FILE})
-    add_subdirectory(${DEVICE_CMAKE_FILE})
+    include(${DEVICE_CMAKE_FILE})
 else()
     message(FATAL_ERROR "Device configuration file not found: ${DEVICE_CMAKE_FILE}")
 endif()

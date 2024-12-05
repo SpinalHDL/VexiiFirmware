@@ -11,15 +11,6 @@ function(target_setup_riscv TARGET)
         set(RV_GENERATE_BIN OFF)
     endif()
 
-    # ToDo: Handle this in a better way
-    set(RV_USE_FPU    OFF)
-    set(RV_ARCH "rv32i")
-    set(RV_ABI "ilp32")
-
-    # ToDo
-    set(RV_USE_FPU OFF)
-    set(RV_DEVICE_FLOAT_API "")
-
     set_target_properties(
         ${TARGET}
         PROPERTIES
@@ -44,20 +35,16 @@ function(target_setup_riscv TARGET)
             $<$<COMPILE_LANGUAGE:CXX>:-fno-rtti>
             $<$<COMPILE_LANGUAGE:CXX>:-fno-use-cxa-atexit>
 
-            $<$<BOOL:${RV_USE_FPU}>:-mfloat-abi=${RV_DEVICE_FLOAT_ABI}>
-
-
             -I${PROJECT_SOURCE_DIR}/device/${DEVICE}
     )
 
     target_link_options(
         ${TARGET}
         PRIVATE
-            -march=rv32i
-            -mabi=ilp32
+            -march=${RV_ARCH}
+            -mabi=${RV_ABI}
             -ffreestanding
             -nostartfiles
-            $<$<BOOL:${RV_USE_FPU}>:-mfloat-abi=${RV_DEVICE_FLOAT_ABI}>
 
             $<$<BOOL:${RV_GENERATE_MAP}>:LINKER:-Map=$<TARGET_FILE_DIR:${TARGET}>/$<TARGET_NAME_IF_EXISTS:${TARGET}>.map>
             -L${PROJECT_SOURCE_DIR}/device/${DEVICE}/linker
