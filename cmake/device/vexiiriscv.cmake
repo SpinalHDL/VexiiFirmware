@@ -45,6 +45,7 @@ function(target_setup_riscv TARGET)
             -mabi=${RV_ABI}
             -ffreestanding
             -nostartfiles
+            -Wl,--gc-sections
 
             $<$<BOOL:${RV_GENERATE_MAP}>:LINKER:-Map=$<TARGET_FILE_DIR:${TARGET}>/$<TARGET_NAME_IF_EXISTS:${TARGET}>.map>
             -L${PROJECT_SOURCE_DIR}/device/${DEVICE}/linker
