@@ -4,10 +4,8 @@ add_library(${TARGET} INTERFACE IMPORTED GLOBAL)
 
 add_subdirectory(legacy)
 
-add_subdirectory(clint)
-add_subdirectory(gpio)
-add_subdirectory(plic)
-add_subdirectory(uart)
+add_subdirectory(riscv)
+add_subdirectory(spinal)
 
 target_include_directories(
     ${TARGET}
