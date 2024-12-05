@@ -1,24 +1,24 @@
-function(target_setup_rv32 TARGET)
-    if (NOT RV32_LINKER_SCRIPT)
-        set(RV32_LINKER_SCRIPT ${PROJECT_SOURCE_DIR}/device/${DEVICE}/linker/default.ld)
+function(target_setup_riscv TARGET)
+    if (NOT RV_LINKER_SCRIPT)
+        set(RV_LINKER_SCRIPT ${PROJECT_SOURCE_DIR}/device/${DEVICE}/linker/default.ld)
     endif()
 
     # Sanity checks
-    if (NOT RV32_GENERATE_MAP)
-        set(RV32_GENERATE_MAP ON)
+    if (NOT RV_GENERATE_MAP)
+        set(RV_GENERATE_MAP ON)
     endif()
-    if (NOT RV32_GENERATE_BIN)
-        set(RV32_GENERATE_BIN OFF)
+    if (NOT RV_GENERATE_BIN)
+        set(RV_GENERATE_BIN OFF)
     endif()
 
     # ToDo: Handle this in a better way
-    set(RV32_USE_FPU    OFF)
-    set(RV32_DEVICE_CPU "rv32i")
-    set(RV32_DEVICE_ABI "ilp32")
+    set(RV_USE_FPU    OFF)
+    set(RV_ARCH "rv32i")
+    set(RV_ABI "ilp32")
 
     # ToDo
-    set(RV32_USE_FPU OFF)
-    set(RV32_DEVICE_FLOAT_API "")
+    set(RV_USE_FPU OFF)
+    set(RV_DEVICE_FLOAT_API "")
 
     set_target_properties(
         ${TARGET}
@@ -29,8 +29,8 @@ function(target_setup_rv32 TARGET)
     target_compile_options(
         ${TARGET}
         PRIVATE
-            -march=rv32i
-            -mabi=ilp32
+            -march=${RV_ARCH}
+            -mabi=${RV_ABI}
             #-g -ggdb
             #-mno-div
             -ffunction-sections
@@ -44,7 +44,7 @@ function(target_setup_rv32 TARGET)
             $<$<COMPILE_LANGUAGE:CXX>:-fno-rtti>
             $<$<COMPILE_LANGUAGE:CXX>:-fno-use-cxa-atexit>
 
-            $<$<BOOL:${RV32_USE_FPU}>:-mfloat-abi=${RV32_DEVICE_FLOAT_ABI}>
+            $<$<BOOL:${RV_USE_FPU}>:-mfloat-abi=${RV_DEVICE_FLOAT_ABI}>
 
 
             -I${PROJECT_SOURCE_DIR}/device/${DEVICE}
@@ -57,24 +57,24 @@ function(target_setup_rv32 TARGET)
             -mabi=ilp32
             -ffreestanding
             -nostartfiles
-            $<$<BOOL:${RV32_USE_FPU}>:-mfloat-abi=${RV32_DEVICE_FLOAT_ABI}>
+            $<$<BOOL:${RV_USE_FPU}>:-mfloat-abi=${RV_DEVICE_FLOAT_ABI}>
 
-            $<$<BOOL:${RV32_GENERATE_MAP}>:LINKER:-Map=$<TARGET_FILE_DIR:${TARGET}>/$<TARGET_NAME_IF_EXISTS:${TARGET}>.map>
+            $<$<BOOL:${RV_GENERATE_MAP}>:LINKER:-Map=$<TARGET_FILE_DIR:${TARGET}>/$<TARGET_NAME_IF_EXISTS:${TARGET}>.map>
             -L${PROJECT_SOURCE_DIR}/device/${DEVICE}/linker
             -L${PROJECT_SOURCE_DIR}
-            -T ${RV32_LINKER_SCRIPT}
+            -T ${RV_LINKER_SCRIPT}
     )
 
     # Generate *.bin (if supposed to)
-    if (RV32_GENERATE_BIN)
-        set(RV32_BIN_PATH ${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}.bin)
+    if (RV_GENERATE_BIN)
+        set(RV_BIN_PATH ${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}.bin)
 
         add_custom_command(
             TARGET ${TARGET}
             COMMENT "Generating *.bin"
             POST_BUILD
-            BYPRODUCTS ${RV32_BIN_PATH}
-            COMMAND ${BIN_OBJCOPY} -O binary $<TARGET_FILE:${TARGET}> ${RV32_BIN_PATH}
+            BYPRODUCTS ${RV_BIN_PATH}
+            COMMAND ${BIN_OBJCOPY} -O binary $<TARGET_FILE:${TARGET}> ${RV_BIN_PATH}
         )
     endif()
 

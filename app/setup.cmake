@@ -2,7 +2,7 @@ include(${PROJECT_SOURCE_DIR}/cmake/device/vexiiriscv.cmake)
 
 function(target_setup_default TARGET)
 
-    target_setup_rv32(${TARGET})
+    target_setup_riscv(${TARGET})
 
     target_compile_features(
         ${TARGET}
