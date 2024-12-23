@@ -5,6 +5,7 @@
 #include <hal/riscv/clint/clint.hpp>
 #include <hal/riscv/plic/plic.hpp>
 #include <hal/spinal/uart/uart.hpp>
+#include <include/device.hpp>
 
 #include <chrono>
 
@@ -28,7 +29,7 @@ namespace soc
     void
     delay(const std::chrono::duration<Rep, Period> duration)
     {
-        clint.delay(duration);
+        clint.delay(duration, SYSTEM_HZ);
     }
 
 }

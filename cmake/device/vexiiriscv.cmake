@@ -36,6 +36,7 @@ function(target_setup_riscv TARGET)
             $<$<COMPILE_LANGUAGE:CXX>:-fno-use-cxa-atexit>
 
             -I${PROJECT_SOURCE_DIR}/soc/${SOC}
+            -I${PROJECT_SOURCE_DIR}/device/${DEVICE}
     )
 
     target_link_options(

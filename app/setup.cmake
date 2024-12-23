@@ -23,6 +23,7 @@ function(target_setup_cpp TARGET)
         PRIVATE
             hal
             system
+            device
     )
 
 endfunction()

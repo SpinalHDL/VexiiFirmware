@@ -12,12 +12,6 @@ namespace hal
         struct clint
         {
             /**
-             * The frequency at which the CLINT peripheral is running at.
-             */
-            // ToDo: Don't hardcode this!
-            constexpr static const std::uint32_t frequency = 100'000'000;
-
-            /**
              * Constructor.
              */
             constexpr
@@ -52,7 +46,7 @@ namespace hal
              */
             template<typename Rep, typename Period>
             void
-            delay(const std::chrono::duration<Rep, Period> duration)
+            delay(const std::chrono::duration<Rep, Period> duration, std::uint32_t frequency)
             {
                 // Convert duration to µsec
                 const auto usec = std::chrono::duration_cast<std::chrono::microseconds>(duration);
