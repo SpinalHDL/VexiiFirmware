@@ -12,6 +12,7 @@ main()
     soc::uart.write(utils::to_bytes("Hello Vexii!\n"));
 
     while (true) {
-        soc::delay(10ms);
+        soc::delay(1ms);
+        soc::uart.write(utils::to_bytes("*\n"));
     }
 }
